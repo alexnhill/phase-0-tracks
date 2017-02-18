@@ -13,3 +13,5 @@ A commit records and saves changes to a repository. A good commit message will p
 
 * What is a merge conflict?
 A merge conflict usually occurs when your current branch and the branch you want to merge into the current branch have diverged.
+
+*release 2 note!*
