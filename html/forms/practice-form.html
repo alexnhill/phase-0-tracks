@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Page</title>
+</head>
+<body>
+<form action="success.html" method="post">
+  <div>
+   <label>Name</label>
+   <input type="text" name="fullname">
+  </div>
+  <div>
+  <label>Pick a color:</label>
+    <select name="color">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+  </div>
+  <div>
+  	<label>Color Preference</label>
+    <textarea name="color-pref">
+		Add other information about color preference here. 
+		</textarea>
+  </div>
+  <div>
+  	<label>Checkbox</label>
+  	<input type="checkbox" name="orange-agree" value="agree">
+      Do you like the color orange?
+  </div>
+  <div>
+  	<label>Date</label>
+  	<input type="date" name="date">
+  </div>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
