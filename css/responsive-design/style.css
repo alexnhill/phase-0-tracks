@@ -56,7 +56,6 @@ figcaption {
   }
   #external-links{
     width: 20%;
-    display: inline-block;
-    vertical-align: top;
+    display: block;
   }
 }
