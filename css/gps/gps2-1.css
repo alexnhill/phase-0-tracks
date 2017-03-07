@@ -1,0 +1,27 @@
+body{
+  font-family: Helvetica;
+  background-image: url(http://cdn3-www.cattime.com/assets/uploads/2011/08/best-kitten-names-1.jpg);
+  background-repeat: repeat;
+}
+
+header{
+  color: purple;
+}
+
+.column-1{
+  background-color: white;
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+
+.column-2{
+  background-color: pink;
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+
+footer{
+  font-style: italic;
+}
