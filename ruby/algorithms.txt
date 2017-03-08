@@ -1,0 +1,22 @@
+
+Elevator Robot Algorithm:
+- Ask elevator rider what floor they are going to (repeat until you have asked all elevator riders).
+	- Once rider provides a value, find the mirrored value on 	the button panel.
+	- Press that button.
+- Wait for elevator stop.
+- When the  elevator stops and reaches the floor corresponding to the rider, say “goodbye!”.
+- Whenever a new rider gets on the elevator, repeat all steps above.
+
+Toothbrushing Algorithm:
+- Open cabinet
+- Remove toothbrush
+- Put toothpaste on toothbrush
+- Turn on faucet and wet toothbrush
+- Bring toothbrush with water and paste combination on bristles to teeth. 
+- Move toothbrush in circular motion around each tooth starting from back left on the top row.
+- Once you reach the back right of the top row, stop.
+- Repeat the two previous steps on the bottom row.
+- Once completed with both rows, spit all excess toothpaste in sink
+- Turn on faucet and use cup to the side of sink to fill with water.
+- Rinse mouth with water and spit in sink
+- Repeat 2x daily for a healthy smile!
