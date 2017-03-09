@@ -23,36 +23,33 @@ until employees.to_i == employees_loop
 	health_insurance = gets.chomp
 
 	puts "Do you have any allergies? Type 'done' when finished."
+	allergies = 0
 	loop do
 		allergies = gets.chomp	
-			if allergies == "sunshine"
-				vampire = "Probably a vampire."
-				puts "#{vampire}"
-				next
-			elsif allergies == "done"
-				break	
-			end
-		end	
+		if allergies == "sunshine"	
+			vampire = "Probably a vampire."
+			break
+		elsif allergies == "done" 
+			break
+		end
+	end	
 
 	if age.to_i == 2017-birth_year.to_i && (garlic_bread == "y" || health_insurance == "y")
 		vampire = "Probably not a vampire."
-		puts "#{vampire}"
 	elsif age.to_i != 2017-birth_year.to_i && (garlic_bread == "n" || health_insurance == "n")
 		vampire = "Probably a vampire."
-		puts "#{vampire}"
 	elsif age.to_i != 2017-birth_year.to_i && garlic_bread == "n" && health_insurance == "n"
 		vampire = "Almost certainly a vampire."
-		puts "#{vampire}"
 	elsif vamp_name == "Drake Cula" || vamp_name == "Tu Fang"
-		vampire = "Definitely a vampire."
-		puts "#{vampire}"
-	elsif allergies == sunsine	
+		vampire = "Definitely a vampire."	
+	elsif allergies == "sunshine"
 		vampire = "Probably a vampire."
-		puts "#{vampire}"
 	else
 		vampire = "Results inconclusive."	
-		puts "#{vampire}"
 	end	
 
-	puts "Name: #{vamp_name} \nAge: #{age} \nYear of birth: #{birth_year} \nGarlic Bread(y/n): #{garlic_bread} \nHealth Insurance(y/n): #{health_insurance} \nVampire: #{vampire}"
+	puts "#{vampire}"
+
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
