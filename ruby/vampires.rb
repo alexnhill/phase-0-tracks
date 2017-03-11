@@ -1,11 +1,8 @@
 
 puts "How many employees will be processed?"
-employees = gets.chomp
+employees = gets.chomp.to_i
 
-employees_loop = 0
-
-until employees.to_i == employees_loop
-	employees_loop +=1
+employees.times do
 
 	puts "What is your name?"
 	vamp_name = gets.chomp
@@ -25,20 +22,28 @@ until employees.to_i == employees_loop
 	puts "Do you have any allergies? Type 'done' when finished."
 	allergies = 0
 	loop do
-		allergies = gets.chomp	
-		if allergies == "sunshine"	
-			vampire = "Probably a vampire."
-			break
-		elsif allergies == "done" 
-			break
-		end
-	end	
+		allergies = gets.chomp
+		break if allergies == "sunshine"
+		break if allergies == "done" 
+	end		
 
-	if age.to_i == 2017-birth_year.to_i && (garlic_bread == "y" || health_insurance == "y")
+	correct_age = age.to_i == 2017-birth_year.to_i
+
+	incorrect_age = age.to_i != 2017-birth_year.to_i
+
+	no_garlic = garlic_bread == "n"
+
+	yes_garlic = garlic_bread == "y"
+
+	no_insurance = health_insurance == "n"
+
+	yes_insurance = health_insurance == "y"
+
+	if correct_age && (yes_garlic || yes_insurance)
 		vampire = "Probably not a vampire."
-	elsif age.to_i != 2017-birth_year.to_i && (garlic_bread == "n" || health_insurance == "n")
+	elsif incorrect_age && (no_garlic || no_insurance)
 		vampire = "Probably a vampire."
-	elsif age.to_i != 2017-birth_year.to_i && garlic_bread == "n" && health_insurance == "n"
+	elsif incorrect_age && no_garlic && no_insurance
 		vampire = "Almost certainly a vampire."
 	elsif vamp_name == "Drake Cula" || vamp_name == "Tu Fang"
 		vampire = "Definitely a vampire."	
