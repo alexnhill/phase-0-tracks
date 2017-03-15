@@ -42,3 +42,42 @@ end
 p "After call"
 p students
 p pets
+
+
+
+# USING DOCUMENTATION
+
+letters = ["a", "b", "c", "d", "e"]
+
+numbers = {one: 1, two: 2, three: 3, four: 4, five: 5}
+
+#1)
+	#hash
+	numbers.delete(:one)
+
+	#array
+	letters.delete("a")
+
+#2)
+	#array
+	letters.select { |letter| letter == "b" }
+
+	#hash
+	numbers.select { |spell, int| int < 3 }
+
+#3)
+	#array
+	letters.reject { |letter| letter == "c" }
+
+	#hash
+	numbers.reject { |spell, int| int > 2 }
+
+#4)
+
+	#array
+	letters.drop_while { |letter| letter < "d" }
+
+
+
+
+
