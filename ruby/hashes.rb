@@ -61,6 +61,12 @@ clientinfo = {
 
 puts clientinfo
 
+# ARRAY OPTION
+=begin
+clientarray = []
+clientarray << clientinfo
+p clientarray
+=end
 
 # UPDATE KEY OPTION
 
