@@ -1,11 +1,11 @@
 
 #method to change letters:
+	#turn string to an array and downcase to be able to check conditions
 	#if else statement to flow through vowel/consonant.
-	#searches to match the values with letters in index
-	#use built in rotate method to advance through array.
+	#searches vowe/consonant arrays to match the values with letters in name index.
+	#use built in rotate method to advance through array when condition matched.
 	#handles edge cases with elsif
-	#turn it back into a string 
-		#new_first = new_vowel.join('')
+	#turn it back into a string and capitalize
 
 
 def letter_change(name)
@@ -19,9 +19,11 @@ def letter_change(name)
       consonants.rotate[consonants.index(letter)]
     elsif letter[index] == "z"
       letter[index] == "b"
+    elsif letter[index] == "u"
+      letter[index] == "a"  
     end
   end
-  name_new.join.capitalize
+  name_new.join('').capitalize
 end
 
 #method that swaps first and last names
@@ -36,10 +38,15 @@ end
 
 #takes names (UI)
 
+loop do
 puts "enter your first name"
 first_name = gets.chomp.to_s
+break if first_name == 'quit' 
 
 puts "enter your last name"
 last_name = gets.chomp.to_s
+break if last_name == 'quit'
 
 name_swap(first_name, last_name)
+
+end
