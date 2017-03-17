@@ -1,27 +1,11 @@
 
-#takes names (UI)
-#method to change letters
+#method to change letters:
 	#if else statement to flow through vowel/consonant.
-	#use built in rotate method to advance through array
-	#
-
-#method that handles the names
-	#swaps first and last
-	#breaks name into an array
-	#replaces it in array once converted
+	#searches to match the values with letters in index
+	#use built in rotate method to advance through array.
+	#handles edge cases with elsif
 	#turn it back into a string 
 		#new_first = new_vowel.join('')
-#method that deals with characters 
-	#searches to match the value to 
-	#finds which index the vowel is in its vowel array
-	#increments the vowel array to the next
-
-
-#next vowel method
-#check name against vowels array
-#for each char, check if it is in the vowel array,
-#if yes, swap the letter for the next
-#if character is equal to an item in the array, perform .next?
 
 
 def letter_change(name)
@@ -37,15 +21,25 @@ def letter_change(name)
       letter[index] == "b"
     end
   end
-  name_new.join
+  name_new.join.capitalize
 end
+
+#method that swaps first and last names
+
+def name_swap(first, last)
+  new_first = ''
+  new_last = ''
+		new_first << letter_change(first)
+		new_last << letter_change(last)
+	puts (new_last + ' ' + new_first)	
+end	
+
+#takes names (UI)
 
 puts "enter your first name"
 first_name = gets.chomp.to_s
-letter_change(first_name)
 
 puts "enter your last name"
 last_name = gets.chomp.to_s
-letter_change(last_name)
 
-
+name_swap(first_name, last_name)
