@@ -17,11 +17,11 @@ def letter_change(name)
       vowels.rotate[vowels.index(letter)] #within the vowels array.rotate over by one[the index of the letter in the vowels array]
     elsif consonants.include?(letter) #conditional to check if the letter is in the consonant array defined above
       consonants.rotate[consonants.index(letter)] #because this has met the above condition, we know that the char exists in the array. we are asking for the index of the letter in the consonants array and from there are rotate to the next by one. This movement is being saved into the new name_new array.
-    elsif letter == "z"
+    elsif letter == "z"  #edge case
       letter == "b"
-    elsif letter == "u"
+    elsif letter == "u" #edge case
       letter == "a"  
-     elsif letter == " "
+     elsif letter == " " #edge case
       letter = " " 
     end
   end
@@ -29,7 +29,7 @@ def letter_change(name)
   namearr = name_new.join('') #join the new_name array back into a string
   namearr2 = namearr.split #re-seperate it into two index items
   first_name = namearr2[0] #assign first name to a new variable based on index
-  last_name = namearr2[1] ##assign first name to a new variable based on index
+  last_name = namearr2[1] #assign first name to a new variable based on index
   name_new = last_name.capitalize! + " " + first_name.capitalize! #capitalize and swap first for last
 end
 
@@ -46,7 +46,7 @@ end
 
 code_names = {
   real_name: [],
-  fake_name: []
+  alias_name: []
 }
 
 
@@ -55,12 +55,12 @@ code_names = {
 loop do
 puts "Enter your first and last name or type 'quit' when you're done!"
 real_name = gets.chomp
-code_names[:real_name].push(real_name)
 if real_name == 'quit' 
   p code_names
   break
  end 
 
-code_names[:fake_name].push(name_swap(real_name))
+code_names[:real_name].push(real_name)
+code_names[:alias_name].push(name_swap(real_name))
 
 end
