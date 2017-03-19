@@ -11,58 +11,56 @@
 def letter_change(name)
   vowels = ["a", "e", "i", "o", "u"]
   consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' ]
-  name = name.downcase.chars
-  name_new = name.map! do |letter| #setting this block equal to name_new
-    if vowels.include?(letter) #conditional statements that check to see what letters are vowels. If yes, it rotates the item in the array 1 over.
-      vowels.rotate[vowels.index(letter)]
-    elsif consonants.include?(letter) #conditional statement to check to see what items in the array are consonants. If yes, rorates the item in the array by 1.
-      consonants.rotate[consonants.index(letter)]
-    elsif letter[index] == "z" #edge case
-      letter[index] == "b"
-    elsif letter[index] == "u" #edge case
-      letter[index] == "a"  
+  name = name.downcase.chars #takes the input and makes it downcase and breaks it into an array to increment through
+  name_new = name.map do |letter| #create a new array called name_new and start block to increment through each array
+    if vowels.include?(letter) #conditional to check if the letter is in the vowels array above
+      vowels.rotate[vowels.index(letter)] #within the vowels array.rotate over by one[the index of the letter in the vowels array]
+    elsif consonants.include?(letter) #conditional to check if the letter is in the consonant array defined above
+      consonants.rotate[consonants.index(letter)] #because this has met the above condition, we know that the char exists in the array. we are asking for the index of the letter in the consonants array and from there are rotate to the next by one. This movement is being saved into the new name_new array.
+    elsif letter == "z"  #edge case
+      letter == "b"
+    elsif letter == "u" #edge case
+      letter == "a"  
+     elsif letter == " " #edge case
+      letter = " " 
     end
   end
-  name_new.join('').capitalize #transforms the array into a string and capitalizes it 
+  #Code addressing capitalization and swapping first / last
+  namearr = name_new.join('') #join the new_name array back into a string
+  namearr2 = namearr.split #re-seperate it into two index items
+  first_name = namearr2[0] #assign first name to a new variable based on index
+  last_name = namearr2[1] #assign first name to a new variable based on index
+  name_new = last_name.capitalize! + " " + first_name.capitalize! #capitalize and swap first for last
 end
 
 #method that swaps first and last names
 
-def name_swap(first, last) #pulls in two parameters
-  new_first = '' #defines a new_first name var
-  new_last = '' #defines a new_last name var
-		new_first << letter_change(first) #assigns result of the letter change method once the argument has been passed in.
-		new_last << letter_change(last) #assigns result of the letter change method once the argument has been passed in.
-	puts (new_last + ' ' + new_first) # prints the result- the new name with the order swapped (last, first)
+def name_swap(real_name)
+	new_name = letter_change(real_name)
+  p new_name
+  return new_name
 end	
+
 
 #hash that stores first/last old and new_first
 
 code_names = {
-  first_name: [],
-  last_name: [],
-  new_first: [],
-  new_last: []
+  real_name: [],
+  alias_name: []
 }
+
 
 #takes names (UI)
 
 loop do
-puts "enter your first name or type 'quit' when you're done!"
-first_name = gets.chomp.to_s
-code_names[:first_name].push(first_name)
-break if first_name == 'quit' 
+puts "Enter your first and last name or type 'quit' when you're done!"
+real_name = gets.chomp
+if real_name == 'quit' 
+  p code_names
+  break
+ end 
 
-puts "enter your last name or type 'quit' when you're done!"
-last_name = gets.chomp.to_s
-code_names[:last_name].push(last_name)
-break if last_name == 'quit'
-
-name_swap(first_name, last_name)
-
-p code_names
+code_names[:real_name].push(real_name)
+code_names[:alias_name].push(name_swap(real_name))
 
 end
-
-#NOTE: When I got to the last release, I realized my program wouldnt be able to store new_first and new_last unless I accepted the first and last names together as the initial inputs from the user. I wasn't able to figure out how to flip the first and last without doing .reverse, which wouldnt swap the order of first and last. 
-
