@@ -1,3 +1,4 @@
+=begin
 
 #RELEASE 0
 
@@ -19,7 +20,7 @@ end
 
 search_array(arr, 89)
 
-=begin
+
      
 #RELEASE 1
 
@@ -49,8 +50,6 @@ end
 fibonacci_count(10)
 
 def fib(n)
- #return [0] if n == 0
- #return [0,1] if n == 1
  fibs = [0, 1]
 
  while fibs.length < n
@@ -70,10 +69,19 @@ fib(40)
 #Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
 
 #Psuedocode:
-#Take in an array or string of integers
+#Take in an array of integers
 #keep numbers that are even (delete those that are odd)
 #than, sort in reverse order
 #return the newly sorted array
+
+
+a = [4, 9, 2, 1, 5, 6, 3]
+
+
+#iterate array .each
+a.each do |i|
+ puts "Hi, #{i}!"
+end
 
 
 =begin
