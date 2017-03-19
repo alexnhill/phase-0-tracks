@@ -75,14 +75,29 @@ fib(40)
 #return the newly sorted array
 
 
-a = [4, 9, 2, 1, 5, 6, 3]
 
-
+def sort(array)
+  n = array.length
+  swapped = false
 #iterate array .each
-a.each do |i|
- puts "Hi, #{i}!"
+	array.each do |i|
+		if i.even?
+	      (n-1).times do |i|
+	      if array[i].odd?
+	      	array.slice!(i)
+	      elsif array[i] < array[i+1]
+	        array[i], array[i+1]=array[i+1], array[i]
+	        swapped = true
+	    	end
+	 	end
+	 break if not swapped
+  	end	
+end
 end
 
+a = [4, 9, 2, 1, 5, 6, 3]
+
+sort(a)
 
 =begin
 #Implement the sorting method in Ruby:
