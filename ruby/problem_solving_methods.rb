@@ -1,4 +1,4 @@
-=begin
+
 #RELEASE 0
 
 #Write a method that takes an array of integers and an integer to search for. The method should return the index of the item, or nil if the integer is not present in the array. Don't use built-in array methods like .index. You are allowed to use .length and .each.
@@ -19,7 +19,7 @@ end
 
 search_array(arr, 89)
 
-
+=begin
      
 #RELEASE 1
 
@@ -47,6 +47,22 @@ def fibonacci_count(n)
 end
 
 fibonacci_count(10)
+
+def fib(n)
+ #return [0] if n == 0
+ #return [0,1] if n == 1
+ fibs = [0, 1]
+
+ while fibs.length < n
+   fibs.push(fibs[-1] + fibs[-2])
+ end
+ 
+ return fibs
+end
+
+fib(40)
+
+
 =end
 
 #RELEASE 2
@@ -60,6 +76,7 @@ fibonacci_count(10)
 #return the newly sorted array
 
 
+=begin
 #Implement the sorting method in Ruby:
 
 def sort(array)
@@ -89,7 +106,7 @@ a = [4, 9, 2, 1, 5, 6, 3]
 sort(a)
 
 
-=begin
+
 NOTES:
 
 Bubble Sort Algorithm:
