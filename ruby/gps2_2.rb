@@ -31,27 +31,53 @@ end
 # # output: new list as a hash
 
 def add_item(list, item, quantity)
-list[item] = quantity
-p list
+	list[item] = quantity
+	p list
 end
+
+# # Method to remove an item from the list
+# # input: the item in the list (as a key)
+# # steps: remove item/key from hash
+# # output: updated hash/list
+
+def remove_item(list, item)
+	list.delete(item)
+	p list
+end
+
+# # Method to update the quantity of an item
+# # input: the list, item for which to update quantity, new quantity
+# # steps: 
+# # output: updated hash/list
+
+def item_quantity(list, item, quantity)
+	list[item] = quantity
+	p list
+end	
+
+# # Method to print a list and make it look pretty
+# # input: takes in list
+# # steps: print each key/value pair in hash
+# # output: neatly printed hash
+
+def print_list(list) #method that talks to the user- displays data to user
+	puts "------------------"
+	puts "Grocery List:"
+	list.each do |food, quantity|
+		puts "#{quantity} #{food}"
+	end
+	puts "------------------"	
+end	
+
+#Test Code
 
 item = "potato"
 items = "sugar apple banana soda"
 quantity = 1 #define quantity
 list = create_list(items, quantity)
 add_item(list, item, quantity)
+remove_item(list, "sugar")
+item_quantity(list, "apple", 3)
+print_list(list)
 
-# # Method to remove an item from the list
-# # input:
-# # steps:
-# # output:
 
-# # Method to update the quantity of an item
-# # input:
-# # steps:
-# # output:
-
-# # Method to print a list and make it look pretty
-# # input:
-# # steps:
-# # output:
