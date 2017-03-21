@@ -1,5 +1,5 @@
 
-# Release :: Design a Class
+# RELEASE 0 :: Design a Class
 
 # SPECIES ------------------------
 # Puppy
