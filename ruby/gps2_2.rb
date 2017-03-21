@@ -90,3 +90,22 @@ remove_item(list, "lemonade")
 print_list(list)
 
 
+#REFLECT
+
+# What did you learn about pseudocode from working on this challenge?
+	# I learned how helpful it can be when planning out your program and can be a great way to wrap your head around how you want to organize your code.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+	# Arrays seem simpler to work with because they done have two parameters (key/value) but the way we nested the array within the hash was a good solution for this prompt.
+# What does a method return?
+	# A method returns the last expression it evaluated.
+# What kind of things can you pass into methods as arguments?
+	# You can pass it all kinds of data types and structures.
+# How can you pass information between methods?
+	# Passing information between methods can be done by nesting method calls. Whatever the return value is can then be called on by other functions!
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+	# This challenge helped me gain a little more confidence with the material. It's still pretty new and I understand the concepts in theory but need a little bit more practice in their application. Having Tam there to guide and confirm what we already knew helped establish that confidence with the material.
+
+
+
+
+
