@@ -7,6 +7,7 @@
 # Print the list (Consider how to make it look nice!)
 # We've gotten you started:
 
+
 # # Method to create a list
 # # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 # # steps: 
@@ -32,7 +33,8 @@ end
 
 def add_item(list, item, quantity)
 	list[item] = quantity
-	p list
+	#puts "This is the output of a method to add an item to a list:"
+	#p list
 end
 
 # # Method to remove an item from the list
@@ -42,7 +44,8 @@ end
 
 def remove_item(list, item)
 	list.delete(item)
-	p list
+	#puts "This is the output of a method to remove an item from the list:"
+	#p list
 end
 
 # # Method to update the quantity of an item
@@ -52,7 +55,8 @@ end
 
 def item_quantity(list, item, quantity)
 	list[item] = quantity
-	p list
+	#puts "This is the output of updating the quantity of an item:"
+	#p list
 end	
 
 # # Method to print a list and make it look pretty
@@ -70,22 +74,19 @@ def print_list(list) #method that talks to the user- displays data to user
 end	
 
 
-#UI
 
-#puts "Please add items to a list"
-#items = gets.chomp
+# Method Calls
 
-
-
-#Test Code
-
-item = "potato"
-items = "sugar apple banana soda"
+#item = "potato"
+items = ""
 quantity = 1 #define quantity
 list = create_list(items, quantity)
-add_item(list, item, quantity)
-remove_item(list, "sugar")
-item_quantity(list, "apple", 3)
+add_item(list, "lemonade", 2)
+add_item(list, "tomatoes", 3)
+add_item(list, "onions", 1)
+add_item(list, "ice cream", 4)
+item_quantity(list, "ice cream", 1)
+remove_item(list, "lemonade")
 print_list(list)
 
 
