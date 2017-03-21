@@ -69,6 +69,14 @@ def print_list(list) #method that talks to the user- displays data to user
 	puts "------------------"	
 end	
 
+
+#UI
+
+#puts "Please add items to a list"
+#items = gets.chomp
+
+
+
 #Test Code
 
 item = "potato"
