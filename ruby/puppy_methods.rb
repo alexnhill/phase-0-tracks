@@ -43,6 +43,34 @@ second_puppy = Puppy.new
 
 #RELEASE 2
 
+=begin
+
+Create kitten class
+Create initialize method
+Define instance methods
+	- Napping
+    -input: none
+    -output:"ZzZzZzZz"
+	-Mischief
+    -input: thing as a string
+    -output: puts "*plays with #{thing}*"
+	-Licks
+		-input: number_licks as an integer
+		-output: integer output
+
+Create counter variable equal to 0
+Create empty kitten_array
+
+Create while loop on counter being less than 50
+	- Create new instance of Kitten
+	- Push new Kitten instance into kitten_array
+	- Increment counter value
+
+Iterate over each kitten_array value
+	- Call each instance method
+
+=end
+
 class Kitten
   
   def initialize
@@ -63,4 +91,22 @@ class Kitten
   end
 
 end
+
+counter = 0
+
+kitten_array = []
+
+while counter < 50
+#   kitten_array << (("kitten" + counter) = Kitten.new)
+#		("kitten" + counter.to_s) = Kitten.new
+    kitten = Kitten.new
+  kitten_array.push(kitten)
+	counter +=1 
+end
+
+kitten_array.each do |x|x.napping
+  x.mischief("remote")
+  x.licks(5)
+end
+
 
