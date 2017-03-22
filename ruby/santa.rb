@@ -1,11 +1,11 @@
 #RELEASE 0
 
 class Santa
-	attr_reader :age, :ethnicity
-	attr_accessor :gender
+	attr_reader :ethnicity
+	attr_accessor :gender, :age
 
 	def initialize(gender, ethnicity)
-		puts "Initializing Santa instance ..."
+		#puts "Initializing Santa instance ..."
 		@gender = gender
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
@@ -21,8 +21,8 @@ class Santa
 	end	
 
 	def celebrate_birthday
-		new_age = @age + 1
-		puts new_age
+		@age = @age + 1
+		#puts new_age
 	end
 
 	def get_mad_at(reindeer_name)
@@ -48,9 +48,25 @@ class Santa
 end
 
 
+
 #Release 4
 
+#Create a method that will take in a number of santas to generate
+#gender and ethnicity can be randomly selected using array.sample method
+#take age and add it to a random number between 0-140
 
+
+def santa_maker(x)
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+	x.times do 
+		santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+		santa.age = rand(140)
+		p santa
+	end
+end	
+
+santa_maker(2)
 
 
 #Release 0 Driver Code
@@ -65,9 +81,6 @@ end
 # santas << Santa.new("female,", "Latino")
 # santas.push(Santa.new("bigender", "white"))
 # p santas
-
-# example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-# example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 
 # example_genders.length.times do |i| #this loops 7 times (length of example_genders) and assigns a new identity (with required parameters)
 #   santas << Santa.new(example_genders[i], example_ethnicities[i])
