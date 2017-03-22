@@ -1,3 +1,5 @@
+# RELEASE 0 & 1
+
 class Puppy
 
   def fetch(toy)
@@ -6,7 +8,7 @@ class Puppy
   end
 
   def speak(x)
-    puts "Woof"*x
+    puts "Woof"* x
   end
   
   def roll_over
@@ -35,3 +37,30 @@ new_puppy.roll_over
 new_puppy.dog_years(2)
 new_puppy.high_five
 second_puppy = Puppy.new
+
+
+
+
+#RELEASE 2
+
+class Kitten
+  
+  def initialize
+    puts "Initializing new kitten ..."
+  end
+  
+  def napping
+    puts "ZzZzZzZz"
+  end
+  
+  def mischief(thing)
+    puts "*plays with #{thing}*"
+  end 
+
+  def licks(number_licks)
+    clean = number_licks * 10
+    puts clean
+  end
+
+end
+
