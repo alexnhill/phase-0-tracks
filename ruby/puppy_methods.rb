@@ -22,13 +22,16 @@ class Puppy
     puts "paw five!"
   end 
   
+  def initiaize
+    puts "Initializing new puppy instance ..."
+  end
+  
 end
 
-
-# Driver Code
 new_puppy = Puppy.new
 new_puppy.fetch("bone")
 new_puppy.speak(4)
 new_puppy.roll_over
 new_puppy.dog_years(2)
 new_puppy.high_five
+second_puppy = Puppy.new
