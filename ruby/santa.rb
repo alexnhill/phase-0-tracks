@@ -61,16 +61,21 @@ example_genders = ["agender", "female", "bigender", "male", "female", "gender fl
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 	x.times do 
 	santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+	santa.age
+	santa.reindeer_ranking
+	santa_printer(santa)
+	end
+end	
+
+def santa_printer(santa)
 	puts "--------------------------"
 	puts "Santa gender: #{santa.gender}"
 	puts "Santa ethnicity: #{santa.ethnicity}"
 	puts "Santa age: #{santa.age}"
-	puts "Favorite Reindeer in Order: #{santa.reindeer_ranking}"
-	end
+	puts "Favorite Reindeer in order: #{santa.reindeer_ranking}"
 end	
 
-
-santa_maker(20)
+santa_maker(2)
 
 
 #Release 0 Driver Code
