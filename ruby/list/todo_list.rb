@@ -19,5 +19,6 @@ class TodoList
 
 	def get_item(item)
 		@list.index(item)
+	end
 
 end
