@@ -1,7 +1,7 @@
 #RELEASE 0
 
 class Santa
-	attr_reader :ethnicity
+	attr_reader :ethnicity, :reindeer_ranking
 	attr_accessor :gender, :age
 
 	def initialize(gender, ethnicity)
@@ -9,7 +9,7 @@ class Santa
 		@gender = gender
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-		@age = 0
+		@age = rand(141)
 	end	
 
 	def speak
@@ -60,13 +60,17 @@ def santa_maker(x)
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 	x.times do 
-		santa = Santa.new(example_genders.sample, example_ethnicities.sample)
-		santa.age = rand(140)
-		p santa
+	santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+	puts "--------------------------"
+	puts "Santa gender: #{santa.gender}"
+	puts "Santa ethnicity: #{santa.ethnicity}"
+	puts "Santa age: #{santa.age}"
+	puts "Favorite Reindeer in Order: #{santa.reindeer_ranking}"
 	end
 end	
 
-santa_maker(2)
+
+santa_maker(20)
 
 
 #Release 0 Driver Code
