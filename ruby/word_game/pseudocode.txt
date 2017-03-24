@@ -1,0 +1,23 @@
+Release 1: Design a Game
+
+#Define a class with following attributes:
+	#secret_word (editable)- this is the initalize argument
+	#guess_counter = 0
+	#game_over = false
+
+#guess method to check letters in the word
+	#puts you have _ guesses- determine number of guesses based on word length (2x guesses?)
+	#input.length * 2
+	#guess the word into an array- check by doing array.index("x")=>returns the index
+	#splits into an array- split(' ')
+	#count guesses
+		#repeated guesses dont count againt user
+
+#guess feedback method (if/else)
+	#stores guesses in array
+	#generate a placeholder based on .length of input and replace each letter when char at index of other matches
+	#if, correct- swap the char and say how many guesses are left
+	#else, spit out array of blanks and say how many guesses are left
+	#if there are no - in array, congratulate
+	#else, game over and taunt
+
