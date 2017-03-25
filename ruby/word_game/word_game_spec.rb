@@ -15,9 +15,4 @@ describe WordGame do
   	expect(new_word.guess_checker("p")). to eq "p------"
   end
 
-
- # it "checks to see if letter guessed is part of secret word" do 
- # 	expect(secret_word.guess) to eq "- - - - - - -"
- # end 
-
 end
