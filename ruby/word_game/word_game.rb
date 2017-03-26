@@ -1,7 +1,7 @@
 # WORD GAME
 
 class WordGame
-attr_accessor :secret_word, :previous_guesses
+attr_accessor :secret_word, :previous_guesses, :count_guesses, :guess_checker, :placeholder_word, :num_guesses
 attr_reader :game_over
 
 	def initialize(word)
@@ -31,6 +31,7 @@ attr_reader :game_over
 		 self.count_guesses(char)
 		 self.game_end
 		 @previous_guesses << char
+		 return @placeholder_word.join
 	end
 
   def game_end
@@ -57,11 +58,12 @@ new_word = WordGame.new("peaches")
 
 #Guess the word
  while !new_word.game_over
- 	puts "Guess a letter"
-    letter = gets.chomp
-    #letter = guesses_arr.sample
+ 	#puts "Guess a letter"
+    #letter = gets.chomp
+    letter = guesses_arr.sample
     new_word.guess_checker(letter)
  end
+
 
 #NOTE: I spoke with multiple guides at Office Hours regarding the instructions explaining the driver code handling input and output and after recieving conflicting directions and answers, I built the while loop that sits outside of the class with both a UI portion that accepts user inputs (currently commented out) and selecting random characters from the alphabet as to not require any "human" user input (how it currently functions).
 

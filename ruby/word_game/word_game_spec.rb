@@ -12,7 +12,19 @@ describe WordGame do
   end
 
   it "guesses what the secret word is and generates a placeholder response" do
-  	expect(new_word.guess_checker("p")). to eq "p------"
+  	expect(new_word.guess_checker("p")).to eq "p------"
+  end
+
+  it "increments by 1 every time a guess is made that is not part of the previous guesses" do
+  	expect(new_word.count_guesses("p")). to eq 1
+  end
+
+  it "game continues to loop if num guesses != guess counter" do
+  	expect(new_word.game_end). to eq false
+  end
+
+  it "generate a num_guesses instance var with a length double that of the input word" do
+   expect(new_word.num_guesses). to eq 14
   end
 
 end
