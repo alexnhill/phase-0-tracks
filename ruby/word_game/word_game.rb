@@ -28,8 +28,8 @@ attr_reader :game_over
 		  	@secret_word[@secret_word.index(char)] = 3
 		  end
 		  puts @placeholder_word.join
-		 self.count_guesses(char)
-		 self.game_end
+		 count_guesses(char)
+		 game_end
 		 @previous_guesses << char
 		 return @placeholder_word.join
 	end
