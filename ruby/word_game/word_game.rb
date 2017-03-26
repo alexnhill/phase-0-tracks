@@ -16,10 +16,10 @@ attr_reader :game_over
 
 	def count_guesses(char)
 		 if @previous_guesses.include?(char)
+		 	@guess_counter += 0
 		 else
 		 	@guess_counter += 1
 		 end
-		puts "You have #{@num_guesses - @guess_counter} out of #{@num_guesses} guesses. Enter a letter to guess."
   	end
 
 	def guess_checker(char)
@@ -30,6 +30,7 @@ attr_reader :game_over
 		  puts @placeholder_word.join
 		 self.count_guesses(char)
 		 self.game_end
+		 @previous_guesses << char
 	end
 
   def game_end
@@ -39,6 +40,9 @@ attr_reader :game_over
 	elsif @placeholder_word.join('') == @key_word
 		puts "Nice job, you got it!"
 		@game_over = true
+	else	
+		puts "You have #{@num_guesses - @guess_counter} out of #{@num_guesses} guesses. Enter a letter to guess."
+		@game_over = false
  	end
   end
   
@@ -50,11 +54,10 @@ guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
 new_word = WordGame.new("peaches")
 
  while !new_word.game_over
- 	#puts "Guess a letter"
-    #letter = gets.chomp
-    letter = guesses_arr.sample
+ 	puts "Guess a letter"
+    letter = gets.chomp
+    #letter = guesses_arr.sample
     new_word.guess_checker(letter)
-    new_word.previous_guesses << letter
  end
 
 #NOTE: I spoke with multiple guides at Office Hours regarding the instructions explaining the driver code handling input and output and after recieving conflicting directions and answers, I built the while loop that sits outside of the class with both a UI portion that accepts user inputs (currently commented out) and selecting random characters from the alphabet as to not require any "human" user input (how it currently functions).

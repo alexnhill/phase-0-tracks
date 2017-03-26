@@ -14,15 +14,10 @@ Release 1: Design a Game
 
 #guess method to check letters in the word
 	#stores guesses in array
-	#guess the word into an array- check by doing array.index("x")=>returns the index
-	#.gsub
-
-#guess feedback method (if/else)
+	#guess the word into an array- check by doing array.index("x")
 	#generate a placeholder based on .length of input and replace each letter when char at index of other matches
-	#if, correct- swap the char and say how many guesses are left
-	#else, spit out array of blanks and say how many guesses are left
-	#if there are no - in array, congratulate
-	#else, game over and taunt
+		#if, correct- swap the char and say how many guesses are left
+		#else, spit out array of blanks and say how many guesses are left
 
 #Predicate method in place of UI- to ask the game, are you done?
 	-if game_over = false
