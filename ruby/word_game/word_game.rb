@@ -2,10 +2,11 @@
 
 class WordGame
 attr_accessor :secret_word, :previous_guesses, :game_over, :guess_counter
-attr_reader :num_guesses, :placeholder_word, :final_word
+attr_reader :num_guesses, :placeholder_word, :final_word, :key_word
 attr_writer
 
 	def initialize(word)
+		@key_word = word
 		@secret_word = word.chars
 		@guess_counter = 0
 		@game_over = false
@@ -22,15 +23,10 @@ attr_writer
 		puts "You have #{@num_guesses - @guess_counter} out of #{@num_guesses} guesses. Enter a letter to guess."
   	end
 
-
 	def guess_checker(char)
 		 while @secret_word.include?(char)
 		 	@placeholder_word[@secret_word.index(char)] = char
 		  	@secret_word[@secret_word.index(char)] = 3
-		  # if @secret_word.include?(char) #QUESTION: begins counting after third entry of same letter
-		  # 	@placeholder_word[@secret_word.index(char)] = char
-		  # 	@secret_word[@secret_word.index(char)] = 3 #need to loop or ask again?
-		  	#p @secret_word
 		  end
 		  puts @placeholder_word.join
 		  count_guesses(char)
@@ -38,68 +34,31 @@ attr_writer
 		 	#check win
 	end
 
-	# def game_end? 
-	#     if @guess_counter == @num_guesses
-	# 	#puts "Ha! Game over, nice try :P"
-	# 		true
-	# 	elsif @placeholder_word == @secret_word
-	# 	#puts "Nice job, you got it!"
-	# 		true
-	# 	else
-	# 		false	
- # 		end	
- # 	end	
-
-
-
-
  end
-
-
-
-	#QUESTION: Implement UI logic into predicate method.. what is syntax? how and where would I call this if not outside method?
-	# 	while game_over == false
-	# 	if @guess_counter == @num_guesses
-	# 		puts "Game over, nice try :P"
-	# 		@game_over = true
-	# 	if 	@placeholder_word == @secret_word
-	# 		puts "Nice job, you got it!"
-	# 		@game_over = true
-	# 	end	
-	# end
-
-#end
-
 
 # UI 
 
-#make an array to feed in the chars to the guess_checker method
-guesses_arr = ["e", "b", "c", "d", "a", "f", "a" "g", "p", "h", "s"]
+guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
 
 new_word = WordGame.new("peaches")
 #new_word.guess_checker("e") 
-#new_word.previous_guesses << letter
-
 
  while !new_word.game_over
- 	puts "Guess a letter"
-    letter = gets.chomp
+ 	#puts "Guess a letter"
+    #letter = gets.chomp
+    letter = guesses_arr.sample
     new_word.guess_checker(letter)
     new_word.previous_guesses << letter
  	if new_word.guess_counter == new_word.num_guesses
 		puts "Ha! Game over, nice try :P"
 		new_word.game_over = true
-	elsif new_word.placeholder_word.join('') == "peaches"
+	elsif new_word.placeholder_word.join('') == new_word.key_word
 		puts "Nice job, you got it!"
 		new_word.game_over = true
  	end
     #p new_word.previous_guesses
  end
 
-
-
-#DRIVER CODE
-#new_word.guess_checker("p")
-
+#NOTE: I spoke with multiple guides at Office Hours regarding the instructions explaining the driver code handling input and output and after recieving conflicting directions and answers, I built the while loop that sits outside of the class with both a UI portion that accepts user inputs (currently commented out) and selecting random characters from the alphabet as to not require any "human" user input (how it currently functions).
 
 
