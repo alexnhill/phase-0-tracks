@@ -1,9 +1,8 @@
 # WORD GAME
 
 class WordGame
-attr_accessor :secret_word, :previous_guesses, :game_over, :guess_counter
-attr_reader :num_guesses, :placeholder_word, :final_word, :key_word
-attr_writer
+attr_accessor :secret_word, :previous_guesses
+attr_reader :game_over
 
 	def initialize(word)
 		@key_word = word
