@@ -48,11 +48,14 @@ attr_reader :game_over
   
  end
 
-# UI / Driver Code
+# DRIVER CODE / UI
+
 guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
 
+#Enter a word to guess
 new_word = WordGame.new("peaches")
 
+#Guess the word
  while !new_word.game_over
  	puts "Guess a letter"
     letter = gets.chomp
@@ -61,3 +64,4 @@ new_word = WordGame.new("peaches")
  end
 
 #NOTE: I spoke with multiple guides at Office Hours regarding the instructions explaining the driver code handling input and output and after recieving conflicting directions and answers, I built the while loop that sits outside of the class with both a UI portion that accepts user inputs (currently commented out) and selecting random characters from the alphabet as to not require any "human" user input (how it currently functions).
+
