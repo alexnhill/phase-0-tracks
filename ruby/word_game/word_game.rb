@@ -2,7 +2,7 @@
 
 class WordGame
 attr_accessor :secret_word, :previous_guesses, :game_over, :guess_counter
-attr_reader :num_guesses, :placeholder_word
+attr_reader :num_guesses, :placeholder_word, :final_word
 attr_writer
 
 	def initialize(word)
@@ -19,7 +19,7 @@ attr_writer
 		 else
 		 	@guess_counter += 1
 		 end
-		puts "You have #{@num_guesses - @guess_counter} guesses. Enter a letter to guess."
+		puts "You have #{@num_guesses - @guess_counter} out of #{@num_guesses} guesses. Enter a letter to guess."
   	end
 
 
@@ -34,25 +34,21 @@ attr_writer
 		  end
 		  puts @placeholder_word.join
 		  count_guesses(char)
-		 if self.game_end?
-		 	
-		 #  p @placeholder_word
-		 #  @placeholder_word = @secret_word.map do |x|
-		 # 	x.gsub(x, char) #QUESTION: how to implement gsub- unsure of syntax
-		 # end
-		 # 	p @placeholder_word
-		 # 	puts @placeholder_word.join('')
+		 #if self.game_end?
+		 	#check win
 	end
 
-	def game_end? 
-	    if new_word.guess_counter == new_word.num_guesses
-		#puts "Ha! Game over, nice try :P"
-			true
-		elsif 	new_word.placeholder_word == new_word.secret_word
-		#puts "Nice job, you got it!"
-			true
- 		end	
- 	end	
+	# def game_end? 
+	#     if @guess_counter == @num_guesses
+	# 	#puts "Ha! Game over, nice try :P"
+	# 		true
+	# 	elsif @placeholder_word == @secret_word
+	# 	#puts "Nice job, you got it!"
+	# 		true
+	# 	else
+	# 		false	
+ # 		end	
+ # 	end	
 
 
 
@@ -72,34 +68,34 @@ attr_writer
 	# 	end	
 	# end
 
-end
+#end
 
 
 # UI 
-new_word = WordGame.new("peaches")
 
-new_word.guess_checker("a")
-new_word.guess_checker("a")
-new_word.guess_checker("a")
-#make an array to feed in the chars to the guess_checher method
+#make an array to feed in the chars to the guess_checker method
+guesses_arr = ["e", "b", "c", "d", "a", "f", "a" "g", "p", "h", "s"]
+
+new_word = WordGame.new("peaches")
+#new_word.guess_checker("e") 
+#new_word.previous_guesses << letter
+
 
  while !new_word.game_over
-    puts "Guess a letter"
+ 	puts "Guess a letter"
     letter = gets.chomp
-
     new_word.guess_checker(letter)
     new_word.previous_guesses << letter
-    #p new_word.previous_guesses
-
-    if new_word.guess_counter == new_word.num_guesses
+ 	if new_word.guess_counter == new_word.num_guesses
 		puts "Ha! Game over, nice try :P"
-		true
-	elsif 	new_word.placeholder_word == new_word.secret_word
+		new_word.game_over = true
+	elsif new_word.placeholder_word.join('') == "peaches"
 		puts "Nice job, you got it!"
-		true
- 	end	
+		new_word.game_over = true
+ 	end
+    #p new_word.previous_guesses
  end
-end
+
 
 
 #DRIVER CODE
