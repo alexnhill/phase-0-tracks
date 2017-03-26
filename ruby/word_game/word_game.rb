@@ -29,19 +29,26 @@ attr_writer
 		  	@secret_word[@secret_word.index(char)] = 3
 		  end
 		  puts @placeholder_word.join
-		  count_guesses(char)
-		 #if self.game_end?
-		 	#check win
+		 self.count_guesses(char)
+		 self.game_end
 	end
 
+  def game_end
+    if @guess_counter == @num_guesses
+		puts "Ha! Game over, nice try :P"
+		@game_over = true
+	elsif @placeholder_word.join('') == @key_word
+		puts "Nice job, you got it!"
+		@game_over = true
+ 	end
+  end
+  
  end
 
-# UI 
-
+# UI / Driver Code
 guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
 
 new_word = WordGame.new("peaches")
-#new_word.guess_checker("e") 
 
  while !new_word.game_over
  	#puts "Guess a letter"
@@ -49,16 +56,6 @@ new_word = WordGame.new("peaches")
     letter = guesses_arr.sample
     new_word.guess_checker(letter)
     new_word.previous_guesses << letter
- 	if new_word.guess_counter == new_word.num_guesses
-		puts "Ha! Game over, nice try :P"
-		new_word.game_over = true
-	elsif new_word.placeholder_word.join('') == new_word.key_word
-		puts "Nice job, you got it!"
-		new_word.game_over = true
- 	end
-    #p new_word.previous_guesses
  end
 
 #NOTE: I spoke with multiple guides at Office Hours regarding the instructions explaining the driver code handling input and output and after recieving conflicting directions and answers, I built the while loop that sits outside of the class with both a UI portion that accepts user inputs (currently commented out) and selecting random characters from the alphabet as to not require any "human" user input (how it currently functions).
-
-
