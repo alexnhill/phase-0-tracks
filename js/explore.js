@@ -5,13 +5,17 @@
 // - asseses the length of the string
 // - loops through each character in the string
 // - use i-- to return characters at a reversed position
+// - add individually reversed chars back to a reverse_string var
 
-var str = "hello";
-
-var reverse = function(string){
-	for (var i = str.length; i >= 0; i--) {
-		console.log(str[i]);
+function reverse(string){
+  var reverse_string = "";
+	for (var i = string.length - 1; i >= 0; i--) {
+		reverse_string += string[i];
  	}
-};
+ 	return reverse_string;
+}
 
-reverse("hello");
+if (1 == 1) {
+	console.log(reverse("hello"));
+}
+
