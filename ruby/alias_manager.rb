@@ -50,10 +50,7 @@ end
 
 #hash that stores first/last old and new_first
 
-code_names = {
-  real_name: [],
-  alias_name: []
-}
+code_names = {}
 
 
 #takes names (UI)
@@ -66,7 +63,6 @@ if real_name == 'quit'
   break
  end 
 
-code_names[:real_name].push(real_name)
-code_names[:alias_name].push(name_swap(real_name))
+code_names[real_name] = (name_swap(real_name))
 
 end
