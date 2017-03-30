@@ -15,10 +15,10 @@ def name_handler(name)
     letter_change(letter)
   end
   #Code addressing capitalization and swapping first / last
-  namearr = name_new.join('') #join the new_name array back into a string
-  namearr2 = namearr.split #re-seperate it into two index items
-  first_name = namearr2[0] #assign first name to a new variable based on index
-  last_name = namearr2[1] #assign first name to a new variable based on index
+  namearr = name_new.join('').split #join the new_name array back into a string
+  p namearr
+  first_name = namearr[0] #assign first name to a new variable based on index
+  last_name = namearr[1] #assign first name to a new variable based on index
   name_new = last_name.capitalize! + " " + first_name.capitalize! #capitalize and swap first for last
 end
 
@@ -59,7 +59,7 @@ loop do
 puts "Enter your first and last name or type 'quit' when you're done!"
 real_name = gets.chomp
 if real_name == 'quit' 
-  p code_names
+  puts code_names
   break
  end 
 
