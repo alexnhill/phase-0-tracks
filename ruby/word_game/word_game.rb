@@ -53,7 +53,7 @@ attr_reader :game_end, :guess_checker, :placeholder_word, :key_word, :game_over,
 
 # DRIVER CODE / UI
 
-guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
+#guesses_arr = "abcdefghijklmnopqrstuvwxyx".chars
 
 #Enter a word to guess
 #new_word = WordGame.new("peaches")
