@@ -32,23 +32,51 @@
 
 // Pseudocode
 // 1. Create compare function
-// 2. If statement to check if one of the key/value pairs is equal to the other using the || comparison operator
+// 2. Take in two objects
+// 3. Loop through obj1
+// 2. If statement to check if one of the key/value pairs is equal to the other using the == comparison operator
 // 3. If condition is true, set the return to true
 // 4. Else, return false
 
-var dog = {name: 'Spot', 'age': 3, isGoodDog: true};
-var cat = {name: 'Kitty', 'age': 3, isGoodCat: true};
-var car = {make: 'Toyota', 'model': 'Highlander', 'age': 3};
+// var dog = {name: 'Roger', age: 3};
+// var cat = {name: 'Roger', age: 2};
+// var car = {model: 'Highlander', age: 5, make: "Toyota"};
 
-function structureCompare(datastruc1, datastruc2) {
-	if (datastruc1.key == datastruc2.key) {
-		return true;
-	} else {
-		return false;
-	}
+// function objectCompare(obj1, obj2) {
+// 	for (var prop in obj1) {
+// 		if (obj1[prop] == obj2[prop]) {
+// 			return true;
+// 		}
+// 	}	
+// 	return false;
+// }
+
+// //Driver Code
+// console.log(objectCompare(cat, dog));
+
+// Release 2
+
+//Pseudocode
+// 1. Write function that takes in an integer
+// 2. Create a word:
+		//function 1: generate a random letter
+		//create a random length between 1-10
+		//push this into an array
+		// do this however many times the argument specifies (loop)
+
+function wordGenerator(int) {
+	var rand_word = [];
+    var alpha_str = "abcdefghijklmnopqrstuvwxyz"
+	  var str = ''
+  	var word_length = Math.floor(Math.random() * (10 - 1)) + 1;
+  	for (var i = 0; i < int; i++) {
+  		for (var i = 0; i < word_length; i++) {
+  	        str += alpha_str.charAt(Math.floor(Math.random() * alpha_str.length));
+  	  }
+  	  rand_word.push(str);
+  	  console.log(rand_word);
+  	}
 }
 
-structureCompare(dog, car);
-
-
+wordGenerator(3);
 
