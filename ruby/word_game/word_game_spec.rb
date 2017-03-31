@@ -56,7 +56,7 @@ describe WordGame do
   end
 
   it "game continues to loop if num guesses != guess counter" do
-  	expect(new_word.game_over). to eq false
+  	expect(new_word.game_over?). to eq false
   end
 
   it "game ends when secret_word is guessed" do
@@ -66,7 +66,7 @@ describe WordGame do
     new_word.guess_checker("c")
     new_word.guess_checker("h")
     new_word.guess_checker("s")
-    expect(new_word.game_over). to eq true
+    expect(new_word.game_over?). to eq true
   end
 
   it "game ends when run out of guesses" do
@@ -85,7 +85,7 @@ describe WordGame do
     new_word.guess_checker("y")
     new_word.guess_checker("c")
     new_word.guess_checker("a")
-    expect(new_word.game_over). to eq true
+    expect(new_word.game_over?). to eq true
   end
 
 end
