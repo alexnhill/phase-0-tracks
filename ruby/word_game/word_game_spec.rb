@@ -56,7 +56,7 @@ describe WordGame do
   end
 
   it "game continues to loop if num guesses != guess counter" do
-  	expect(new_word.game_over?). to eq false
+  	expect(new_word.game_end?). to eq false
   end
 
   it "game ends when secret_word is guessed" do
@@ -66,7 +66,7 @@ describe WordGame do
     new_word.guess_checker("c")
     new_word.guess_checker("h")
     new_word.guess_checker("s")
-    expect(new_word.game_over?). to eq true
+    expect(new_word.game_end?). to eq true
   end
 
   it "game ends when run out of guesses" do
@@ -85,7 +85,65 @@ describe WordGame do
     new_word.guess_checker("y")
     new_word.guess_checker("c")
     new_word.guess_checker("a")
-    expect(new_word.game_over?). to eq true
+    expect(new_word.game_end?). to eq true
+  end
+
+  it "includes the new guess in the previous guesses array" do
+    new_word.guess_checker("o")
+    expect(new_word.previous_guesses).to include("o")
+  end
+
+  it "includes the all guesses in the previous guesses array" do
+    new_word.guess_checker("o")
+    new_word.guess_checker("e")
+    new_word.guess_checker("e")
+    new_word.guess_checker("q")
+    new_word.guess_checker("y")
+    new_word.guess_checker("t")
+    new_word.guess_checker("b")
+    expect(new_word.previous_guesses).to include("o", "e", "e", "q", "y", "t", "b")
+  end
+
+  it "prints a message when the game was won" do
+    new_word.guess_checker("p")
+    new_word.guess_checker("e")
+    new_word.guess_checker("a")
+    new_word.guess_checker("c")
+    new_word.guess_checker("h")
+    new_word.guess_checker("s")
+    expect { new_word.game_end? }.to output(/Nice job, you got it!/).to_stdout
+  end
+
+    it "prints a message when the game was lost" do
+    new_word.guess_checker("o")
+    new_word.guess_checker("r")
+    new_word.guess_checker("w")
+    new_word.guess_checker("q")
+    new_word.guess_checker("y")
+    new_word.guess_checker("t")
+    new_word.guess_checker("b")
+    new_word.guess_checker("v")
+    new_word.guess_checker("m")
+    new_word.guess_checker("n")
+    new_word.guess_checker("z")
+    new_word.guess_checker("p")
+    new_word.guess_checker("y")
+    new_word.guess_checker("c")
+    new_word.guess_checker("a")
+    expect { new_word.game_end? }.to output(/Ha! Game over, nice try :P/).to_stdout
+  end
+
+    it "prints a message with remaining guesses" do
+    new_word.guess_checker("o")
+    new_word.guess_checker("r")
+    expect { new_word.game_end? }.to output(/You have 12 out of 14 guesses. Enter a letter to guess/).to_stdout
+  end
+
+    it "prints a message with remaining guesses and doesnt count a duplicate guess" do
+    new_word.guess_checker("o")
+    new_word.guess_checker("e")
+    new_word.guess_checker("e")
+    expect { new_word.game_end? }.to output(/You have 12 out of 14 guesses. Enter a letter to guess/).to_stdout
   end
 
 end
