@@ -7,25 +7,24 @@
 // 3. If the condition is true, reassign the length variable and the variable that tracks the current longest value
 // 4. Print longest value once loop is completed
 
-// var arr = ["red", "green", "blue", "yellow"];
-// var names = ["Bob", "Susan", "Mary", "Walt", "Musan"]
-// var supplies = ["pencil", "ruler", "pen", "paper"]
-// var zombie_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
-// var current_length = 0;
-// var longest = 0;
-
-// function wordLoop(arr) {
-// 	for (var i = 0; i < arr.length; i++) { //creates loop
-// 		if (arr[i].length > current_length) { //sets condition that says, if the the length of the current item is greater than the current_length variable, do the following:
-// 			current_length = arr[i].length; //reassign the length of the current length var
-// 			longest = arr[i]; //assign this item to the longest var
-// 		}		
-// 	}
-// console.log(longest); //print longest once loop has run and the longest item has been determined from the array	
-// };
+var arr = ["red", "green", "blue", "yellow"];
+var names = ["Bob", "Susan", "Mary", "Walt", "Musan"]
+var supplies = ["pencil", "ruler", "pen", "paper"]
+var zombie_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
+function wordLoop(arr) {
+	var current_length = 0;
+	var longest = 0;
+	for (var i = 0; i < arr.length; i++) { //creates loop
+		if (arr[i].length > current_length) { //sets condition that says, if the the length of the current item is greater than the current_length variable, do the following:
+			current_length = arr[i].length; //reassign the length of the current length var
+			longest = arr[i]; //assign this item to the longest var
+		}		
+	}
+return longest; //print longest once loop has run and the longest item has been determined from the array	
+};
 
 // //Driver code
-// wordLoop(zombie_supplies); //call this function
+//console.log(wordLoop(zombie_supplies)); //call this function
 
 
 // Release 1 
@@ -66,17 +65,22 @@
 
 function wordGenerator(int) {
 	var rand_word = [];
-    var alpha_str = "abcdefghijklmnopqrstuvwxyz"
-	  var str = ''
-  	var word_length = Math.floor(Math.random() * (10 - 1)) + 1;
   	for (var i = 0; i < int; i++) {
-  		for (var i = 0; i < word_length; i++) {
+  		var str = ''
+  		var word_length = Math.floor(Math.random() * (10 - 1)) + 1;
+  		var alpha_str = "abcdefghijklmnopqrstuvwxyz"
+  		for (var j = 0; j < word_length; j++) {
   	        str += alpha_str.charAt(Math.floor(Math.random() * alpha_str.length));
-  	  }
-  	  rand_word.push(str);
-  	  console.log(rand_word);
+  	  	}
+  	rand_word.push(str);
   	}
+ return rand_word;
 }
 
-wordGenerator(3);
+// Driver Code
+for (var i = 0; i < 10; i++) {
+var arr = wordGenerator(3);
+console.log(arr);
+console.log(wordLoop(arr));
+}
 
