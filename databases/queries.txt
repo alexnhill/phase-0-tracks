@@ -74,3 +74,35 @@ id          movies            year        any_good    director_id
 5           The Thin Red Lin  1998        true        2          
 7           The Royal Tenenb  2001        true        1     
 
+
+
+RELEASE 3:
+
+Try a few different joins in your database, and record the commands and the output in queries.txt.
+
+INNER JOIN-
+sqlite> SELECT movies, year, any_good, director
+   ...> FROM [films] JOIN directors
+   ...> ON [films].director_id = directors.id
+   ...> ;
+movies            year        any_good    director    
+----------------  ----------  ----------  ------------
+Moonrise Kingdom  2012        true        Wes Anderson
+The Grand Budape  2014        true        Wes Anderson
+Romeo + Juliet    1996        true        Baz Luhrmann
+The Tree of Life  2011        true        Terrence Mal
+The Thin Red Lin  1998        true        Terrence Mal
+The Royal Tenenb  2001        true        Wes Anderson
+
+LEFT JOIN- 
+sqlite> SELECT movies, year, any_good, director
+   ...> FROM films LEFT JOIN directors
+   ...> ON films.director_id = directors.id
+   ...> WHERE director="Wes Anderson";
+movies            year        any_good    director    
+----------------  ----------  ----------  ------------
+Moonrise Kingdom  2012        true        Wes Anderson
+The Grand Budape  2014        true        Wes Anderson
+The Royal Tenenb  2001        true        Wes Anderson
+
+
