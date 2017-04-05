@@ -1,0 +1,108 @@
+RELEASE 2:
+
+In the solo_project directory, create a file called queries.txt. For each SQL query you run, paste both the command and the output (if any) into queries.txt.
+Run a SQL query for each of the following:
+
+1. Display the information in one table (either table is fine).
+
+sqlite> .headers on
+sqlite> .mode column
+sqlite> SELECT * FROM films;
+id          movies            year        any_good    director_id
+----------  ----------------  ----------  ----------  -----------
+1           Moonrise Kingdom  2012        true        1          
+2           The Grand Budape  2014        true        1          
+3           Romeo + Juliet    1996        true        3          
+4           The Tree of Life  2011        false       2          
+5           The Thin Red Lin  1998        true        2          
+6           Australia         2008        false       3          
+7           The Royal Tenenb  2001        true        1    
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> UPDATE films SET any_good="true" WHERE director_id=2;
+
+sqlite> SELECT * FROM films;
+id          movies            year        any_good    director_id
+----------  ----------------  ----------  ----------  -----------
+1           Moonrise Kingdom  2012        true        1          
+2           The Grand Budape  2014        true        1          
+3           Romeo + Juliet    1996        true        3          
+4           The Tree of Life  2011        true        2          
+5           The Thin Red Lin  1998        true        2          
+6           Australia         2008        false       3          
+7           The Royal Tenenb  2001        true        1     
+
+3. Display the information in both tables using one query.
+
+sqlite> SELECT * FROM films, directors WHERE films.director_id=directors.id;
+id          movies            year        any_good    director_id  id          director    
+----------  ----------------  ----------  ----------  -----------  ----------  ------------
+1           Moonrise Kingdom  2012        true        1            1           Wes Anderson
+2           The Grand Budape  2014        true        1            1           Wes Anderson
+3           Romeo + Juliet    1996        true        3            3           Baz Luhrmann
+4           The Tree of Life  2011        true        2            2           Terrence Mal
+5           The Thin Red Lin  1998        true        2            2           Terrence Mal
+6           Australia         2008        false       3            3           Baz Luhrmann
+7           The Royal Tenenb  2001        true        1            1           Wes Anderson
+
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT films.movies, films.year, directors.director FROM films JOIN directors ON films.director_id=directors.id;
+movies            year        director    
+----------------  ----------  ------------
+Moonrise Kingdom  2012        Wes Anderson
+The Grand Budape  2014        Wes Anderson
+Romeo + Juliet    1996        Baz Luhrmann
+The Tree of Life  2011        Terrence Mal
+The Thin Red Lin  1998        Terrence Mal
+Australia         2008        Baz Luhrmann
+The Royal Tenenb  2001        Wes Anderson
+
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> DELETE FROM films WHERE any_good="false";
+sqlite> SELECT * FROM films;
+id          movies            year        any_good    director_id
+----------  ----------------  ----------  ----------  -----------
+1           Moonrise Kingdom  2012        true        1          
+2           The Grand Budape  2014        true        1          
+3           Romeo + Juliet    1996        true        3          
+4           The Tree of Life  2011        true        2          
+5           The Thin Red Lin  1998        true        2          
+7           The Royal Tenenb  2001        true        1     
+
+
+
+RELEASE 3:
+
+Try a few different joins in your database, and record the commands and the output in queries.txt.
+
+INNER JOIN-
+sqlite> SELECT movies, year, any_good, director
+   ...> FROM [films] JOIN directors
+   ...> ON [films].director_id = directors.id
+   ...> ;
+movies            year        any_good    director    
+----------------  ----------  ----------  ------------
+Moonrise Kingdom  2012        true        Wes Anderson
+The Grand Budape  2014        true        Wes Anderson
+Romeo + Juliet    1996        true        Baz Luhrmann
+The Tree of Life  2011        true        Terrence Mal
+The Thin Red Lin  1998        true        Terrence Mal
+The Royal Tenenb  2001        true        Wes Anderson
+
+LEFT JOIN- 
+sqlite> SELECT movies, year, any_good, director
+   ...> FROM films LEFT JOIN directors
+   ...> ON films.director_id = directors.id
+   ...> WHERE director="Wes Anderson";
+movies            year        any_good    director    
+----------------  ----------  ----------  ------------
+Moonrise Kingdom  2012        true        Wes Anderson
+The Grand Budape  2014        true        Wes Anderson
+The Royal Tenenb  2001        true        Wes Anderson
+
+
