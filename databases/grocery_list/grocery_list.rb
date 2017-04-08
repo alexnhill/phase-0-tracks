@@ -44,6 +44,7 @@ db.execute(create_table_cmd)
 
 	def view_list(db)
 		list = db.execute("SELECT * FROM groceries")
+		puts "Grocery List:"
 		list.each do |list_item|
 			puts "#{list_item['quantity']} #{list_item['item']} at #{list_item['store']} (#{list_item['who']})"
 		end	
@@ -85,7 +86,7 @@ db.execute(create_table_cmd)
 
 loop do
  menu 
- user_input = gets.chomp.to_i
+ user_input = gets.chomp
  break if user_input == 'q'	
 
 
