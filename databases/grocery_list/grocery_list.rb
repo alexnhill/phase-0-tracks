@@ -1,3 +1,6 @@
+# I decided to design a grocery list tool that could be used by roommates, partners, to designate specifically who should be buying what and where. This can reduce any confusion associated with keeping the fridge stocked. Additionally, having one consolidated list is very helpful!
+
+
 #Pseudocode
 
 #Create a grocery list class
@@ -6,7 +9,9 @@
 #UI will ask what you are trying to do and will connect to methods that will do all of the actions.
 	#add to a list
 	#check something off
-	#see the list- filter who the list items are assigned to
+	#see the list
+		#view whole list
+		#filter who the list items are assigned to
 	#update quantity
 
 #Grocery list will have the following categories
@@ -20,49 +25,64 @@
 #require gems
 require 'sqlite3'
 
-#Grocery_List Class
+db = SQLite3::Database.new("groceries.db")
+db.results_as_hash = true
 
-class Grocery
-	db = SQLite3::Database.new("groceries.db")
 
-	def initialize
-		create_table_cmd = <<-SQL
-  			CREATE TABLE IF NOT EXISTS groceries(
-	    		id INTEGER PRIMARY KEY,
-			    quantity INT,
-			    item VARCHAR(255),
-			    store VARCHAR(255),
-			    who VARCHAR(255)
-			  );
-			SQL
-		db.execute(create_table_cmd)
-	end
+create_table_cmd = <<-SQL
+  	CREATE TABLE IF NOT EXISTS groceries(
+	    id INTEGER PRIMARY KEY,
+		quantity INT,
+		item VARCHAR(255),
+		store VARCHAR(255),
+		who VARCHAR(255)
+		);
+SQL
 
-	def view_list
-		db.execute("SELECT * FROM groceries")
+db.execute(create_table_cmd)
+
+
+	def view_list(db)
+		list = db.execute("SELECT * FROM groceries")
+		list.each do |list_item|
+			puts "#{list_item['quantity']} #{list_item['item']} at #{list_item['store']} (#{list_item['who']})"
+		end	
 	end	
 
-	def view_person_list(person)
-		db.execute("SELECT * FROM groceries where name = ?", person)
+	def view_person_list(db, person)
+		list = db.execute("SELECT * FROM groceries WHERE who = ?", person)
+		puts "#{person}'s List:"
+		list.each do |list_item|
+			puts "#{list_item['quantity']} #{list_item['item']} at #{list_item['store']}"
+		end	
 	end
 
-	def add_item(new_quantity, new_item, new_store, new_who)
-		db.execute("INSERT INTO groceries (quantity, item, store, who) VALUES (? , ?, ?, ?)", [new_quantity, new_item, new_store, new_who])
+	def add_item(db, new_quantity, new_item, new_store, new_who)
+		db.execute("INSERT INTO groceries (quantity, item, store, who) VALUES (?, ?, ?, ?)", [new_quantity, new_item, new_store, new_who])
 	end
 
-	def check_off(item_to_delete)
+	def check_off(db, item_to_delete)
 		db.execute("DELETE FROM groceries WHERE item = ?", item_to_delete)
 	end	
 
-	def update_qty(item, new_quantity)
-		db.execute("UPDATE groceries SET quantity = ? WHERE item = ?" [quantity, item])
+	def update_qty(db, new_quantity, item)
+		db.execute("UPDATE groceries SET quantity = ? WHERE item = ?", [new_quantity, item])
 	end
 
-end
+
 
 #UI
-# p "What are you trying to do? \n Please input the number corresponding to what you would like to do: \n (1) Add to the list \n (2) Remove something from the list \n (3) View the list"
-# user_input = gets.chomp.to_i
+ # MENU
+  puts "\nSelect one of the following options:"
+  puts 'Enter 1 to add to the list'
+  puts 'Enter 2 to update a quantity'
+  puts 'Enter 3 to remove something from the list'
+  puts 'Enter 4 to view the whole list'
+  puts 'Enter 5 to view just your list' 
+  puts "Enter 'q' to quit"
+
+  user_input = gets.chomp.to_i
+
 # if user_input == 1 
 #  	#directs to add to list method
 #  	puts "1"
