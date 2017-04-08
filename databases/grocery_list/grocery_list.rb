@@ -1,10 +1,7 @@
 # I decided to design a grocery list tool that could be used by roommates, partners, to designate specifically who should be buying what and where. This can reduce any confusion associated with keeping the fridge stocked. Additionally, having one consolidated list is very helpful!
 
 
-#Pseudocode
-
-#Create a grocery list class
-	#initialize with 
+# PSEUDOCODE
 
 #UI will ask what you are trying to do and will connect to methods that will do all of the actions.
 	#add to a list
@@ -20,9 +17,11 @@
 	#which grocery store (East Village Organic, Trader Joes)
 	#who is responsible / assigned party
 
+
 #########################
 
-#require gems
+
+
 require 'sqlite3'
 
 db = SQLite3::Database.new("groceries.db")
@@ -41,6 +40,7 @@ SQL
 
 db.execute(create_table_cmd)
 
+# METHODS
 
 	def view_list(db)
 		list = db.execute("SELECT * FROM groceries")
@@ -61,7 +61,7 @@ db.execute(create_table_cmd)
 		db.execute("INSERT INTO groceries (quantity, item, store, who) VALUES (?, ?, ?, ?)", [new_quantity, new_item, new_store, new_who])
 	end
 
-	def check_off(db, item_to_delete)
+	def remove(db, item_to_delete)
 		db.execute("DELETE FROM groceries WHERE item = ?", item_to_delete)
 	end	
 
@@ -71,8 +71,9 @@ db.execute(create_table_cmd)
 
 
 
-#UI
+# UI
  # MENU
+ def menu
   puts "\nSelect one of the following options:"
   puts 'Enter 1 to add to the list'
   puts 'Enter 2 to update a quantity'
@@ -80,28 +81,61 @@ db.execute(create_table_cmd)
   puts 'Enter 4 to view the whole list'
   puts 'Enter 5 to view just your list' 
   puts "Enter 'q' to quit"
+  end
 
-  user_input = gets.chomp.to_i
+loop do
+ menu 
+ user_input = gets.chomp.to_i
+ break if user_input == 'q'	
 
-# if user_input == 1 
-#  	#directs to add to list method
-#  	puts "1"
-# elsif user_input == 2
-# 	#directs to delete from list method
-# 	puts "2"
-# elsif user_input == 3
-# 	#directs to view the list method
-# 	puts "3"
-# end
 
-# #add to list method
-# def add_item
-#   puts "Please type the item you would like to add"
-#   new_item = gets.chomp
-#   puts "Please enter the quantity of that item"
-#   item_qty = gets.chomp.to_i
-#   puts "What market can you find the item at"
-#   market = gets.chomp
-#   db.execute("INSERT INTO groceries (name, age) VALUES (?, ?)", [name, age])
-# end
+case user_input.to_i
+  when 1
+    puts "Please enter the item you would like to add:"
+    item = gets.chomp
+    puts "How many of this item would you like to add?"
+    qty = gets.chomp.to_i
+    puts "What store can you find this item at?"
+    store = gets.chomp
+    puts "Who is responsible for buying this item?"
+    who = gets.chomp
+
+    add_item(db, qty, item, store, who)
+
+  when 2
+    puts "For which item would you like to update the quantity of?"
+    list = db.execute("SELECT * FROM groceries")
+		list.each do |list_item|
+			puts "#{list_item['quantity']} #{list_item['item']} at #{list_item['store']} (#{list_item['who']})"
+		end
+	item = gets.chomp
+	puts "Please enter the new quantity amount: "
+	new_quantity = gets.chomp.to_i
+
+    update_qty(db, new_quantity, item)
+
+  when 3
+    puts "Which item would you like to remove?"
+    list = db.execute("SELECT * FROM groceries")
+		list.each do |list_item|
+			puts "#{list_item['quantity']} #{list_item['item']} at #{list_item['store']} (#{list_item['who']})"
+		end
+	item = gets.chomp
+
+	remove(db, item)	
+
+  when 4
+	view_list(db)
+
+  when 5
+  	puts "Enter the name of who's list you would like to view: "
+  	who = gets.chomp
+
+  	view_person_list(db, who)
+
+  else 
+  	puts "Please try again!"
+
+end
+end
 
