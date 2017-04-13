@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src= "jquery.js"></script>
+</head>
+<body>
+<header><strong>Make this unoriginal header more original by clicking</strong></header>
+<p> Click to hide this paragraph.</p>
+<ul>
+	<li id="dbl-click">double click me</li>
+	<li id="hover">hover over me</li>
+</ul>
+
+<script>
+
+$(document).ready(function(){
+ console.log("The DOM is ready!");
+});
+
+$("header").click(function(){
+	$(this).css("font-style", "italic");
+});
+
+$("p").click(function(){
+	$(this).hide();
+});
+
+$("#dbl-click").dblclick(function(){
+	alert("You double clicked!");
+});
+
+$("#hover").hover(function(){
+	$(this).css("color", "red");
+},
+function(){
+	$(this).css("color", "blue");
+});
+
+</script>
+
+</body>
+</html>
