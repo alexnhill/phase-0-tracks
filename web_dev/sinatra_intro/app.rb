@@ -74,7 +74,7 @@ end
 #Make a route that allows the user to search the database in some way -- maybe for students who have a certain first name, or some other attribute. If you like, you can simply modify the home page to take a query parameter, and filter the students displayed if a query parameter is present
 
 get '/studentsearch/:key/:value' do 
-  student = db.execute("SELECT * FROM students WHERE ?=?", params[:key], params[:value])[0]
+  student = db.execute("SELECT * FROM students WHERE #{params[:key]}=#{params[:value]}")[0]
   student.to_s
 end
 
