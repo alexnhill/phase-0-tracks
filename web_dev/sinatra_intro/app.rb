@@ -61,3 +61,25 @@ get '/great_job/' do
   end
 end
 
+# add route parameter
+
+get '/add/:number1/plus/:number2' do
+  int_1 = params[:number1].to_i
+  int_2 = params[:number2].to_i
+  answer = int_1 + int_2
+  answer.to_s
+end
+
+# optional bonus route
+#Make a route that allows the user to search the database in some way -- maybe for students who have a certain first name, or some other attribute. If you like, you can simply modify the home page to take a query parameter, and filter the students displayed if a query parameter is present
+
+get '/studentsearch/:key/:value' do 
+  student = db.execute("SELECT * FROM students WHERE ?=?", params[:key], params[:value])[0]
+  student.to_s
+end
+
+
+
+
+
+
